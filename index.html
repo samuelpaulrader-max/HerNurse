@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HerNurse — Women's Health, Guided by Nurses</title>
+  <meta name="description" content="HerNurse educates and empowers women to make confident decisions about their health — with trusted, nurse-led articles, real stories, and personalized care." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <span>Women's health, guided by nurses.</span>
+      <span class="links">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="#newsletter">Subscribe</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container masthead">
+      <a href="index.html" class="brand"><span class="mark">HN</span> HerNurse</a>
+      <div class="header-actions">
+        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('cats').classList.toggle('open')">☰</button>
+        <a href="#newsletter" class="btn-sub">Subscribe</a>
+        <a href="contact.html" class="btn-donate">Book a nurse</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="catnav">
+    <div class="container" id="cats">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Your Care</a>
+      <a href="topics.html">Your Health</a>
+      <a href="topics.html">Your Wellness</a>
+      <a href="stories.html">Real Stories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Ask a nurse -->
+  <section class="ask" id="ask">
+    <div class="container">
+      <h2>What medical question can I answer for you?</h2>
+      <p class="sub">Ask anything. You'll get a short, plain-language answer first — then tap <strong>More info</strong> to keep learning, one bite at a time.</p>
+      <div class="ask-box">
+        <form class="ask-inputrow" id="askForm" autocomplete="off">
+          <input id="askInput" type="text" placeholder="e.g. What helps with hot flashes?" aria-label="Ask a medical question" />
+          <button type="submit">Ask</button>
+        </form>
+        <div class="ask-chips" id="askChips"></div>
+      </div>
+
+      <article class="answer-card" id="answerCard">
+        <div class="gq-crumb"><a onclick="HN.reset()">HerNurse</a><span>›</span><a onclick="HN.reset()">Ask a Nurse</a><span>›</span><span id="crumbNow" style="color:rgba(255,255,255,0)"></span></div>
+        <p class="gq-label">Question</p>
+        <h1 class="gq-question" id="answerQ"></h1>
+        <p class="gq-answer-label">Answer</p>
+        <div id="answerBody"></div>
+        <div class="answer-actions">
+          <button class="btn-more" id="moreBtn" onclick="HN.more()">More info ↓</button>
+          <button class="btn-reset" onclick="HN.reset()">Ask another question</button>
+          <span class="answer-progress" id="answerProgress"></span>
+        </div>
+        <div class="gq-related" id="relatedWrap" style="display:none">
+          <h4>Related questions</h4>
+          <div id="relatedList"></div>
+        </div>
+        <p class="answer-disc">This is general health information, not a diagnosis or medical advice. For anything urgent or personal, talk to a nurse or doctor. In an emergency, call your local emergency number.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="featured">
+    <div class="container featured-grid">
+      <article class="feature-main">
+        <div class="thumb">Featured story image</div>
+        <span class="kicker">Menopause &amp; Midlife</span>
+        <h2><a href="#" style="color:var(--ink)">What Every Woman Should Know About Perimenopause — From a Nurse Who's Seen It All</a></h2>
+        <p>The signs are easy to miss and even easier to dismiss. Here's how to recognize the transition early and feel in control of what comes next.</p>
+        <div class="byline">By <a href="about.html">The HerNurse Team, RN</a> · 24 Jun 2026</div>
+      </article>
+
+      <div class="feature-side">
+        <article class="side-item">
+          <div class="thumb">🌿</div>
+          <div>
+            <span class="kicker">Prevention</span>
+            <h3><a href="#">The Screenings Women Skip Most — and Why They Matter</a></h3>
+          </div>
+        </article>
+        <article class="side-item">
+          <div class="thumb">🤰</div>
+          <div>
+            <span class="kicker">Postpartum</span>
+            <h3><a href="#">A Nurse's Guide to the Fourth Trimester</a></h3>
+          </div>
+        </article>
+        <article class="side-item">
+          <div class="thumb">💬</div>
+          <div>
+            <span class="kicker">Advocacy</span>
+            <h3><a href="#">How to Get Heard at Your Next Doctor's Appointment</a></h3>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission strip -->
+  <section class="sec sec-alt">
+    <div class="container" style="text-align:center; max-width:48em; margin:0 auto;">
+      <h2 style="color:var(--slate)">We educate and empower women to make confident decisions about their health.</h2>
+      <p>HerNurse pairs trustworthy, plain-language health information with real, nurse-led care — so no woman has to navigate her health alone.</p>
+      <p style="margin-top:18px"><a href="services.html" class="btn btn-primary">See how we help</a></p>
+    </div>
+  </section>
+
+  <!-- Your Health -->
+  <section class="sec">
+    <div class="container">
+      <div class="sec-title">Your Health <a href="topics.html">View all</a></div>
+      <div class="cards">
+        <article class="acard">
+          <div class="thumb">🌸</div>
+          <span class="kicker">Menopause &amp; Aging Well</span>
+          <h3><a href="#">11 Things a Hot Flash Might Be Telling You</a></h3>
+          <p>Understanding the signals your body sends during the menopause transition.</p>
+        </article>
+        <article class="acard">
+          <div class="thumb">🩺</div>
+          <span class="kicker">Prevention &amp; Screenings</span>
+          <h3><a href="#">Your Decade-by-Decade Checkup Checklist</a></h3>
+          <p>The tests and conversations worth having in your 30s, 40s, 50s and beyond.</p>
+        </article>
+        <article class="acard">
+          <div class="thumb">💞</div>
+          <span class="kicker">Sexual Health</span>
+          <h3><a href="#">Talking to Your Nurse About the Things You'd Rather Not</a></h3>
+          <p>Why no question is too small, and how a nurse-led visit feels different.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Stories -->
+  <section class="sec sec-alt">
+    <div class="container">
+      <div class="sec-title">Real Women, Real Stories <a href="stories.html">View all</a></div>
+      <div class="cards">
+        <article class="acard">
+          <div class="thumb">⭐</div>
+          <span class="kicker">Patient Story</span>
+          <h3><a href="#">“For the First Time, Someone Explained It in Words I Understood.”</a></h3>
+          <p>How nurse-led guidance changed one woman's relationship with her health.</p>
+        </article>
+        <article class="acard">
+          <div class="thumb">⭐</div>
+          <span class="kicker">Patient Story</span>
+          <h3><a href="#">Navigating a New Diagnosis With a Nurse in Her Corner</a></h3>
+          <p>A reminder that you don't have to face the unknown by yourself.</p>
+        </article>
+        <article class="acard">
+          <div class="thumb">⭐</div>
+          <span class="kicker">Patient Story</span>
+          <h3><a href="#">From Overwhelmed to In Control: A Postpartum Journey</a></h3>
+          <p>Practical support in the months that matter most.</p>
+        </article>
+      </div>
+      <p style="text-align:center; margin-top:22px; font-size:.9rem"><em>Add your real client stories here as you grow.</em></p>
+    </div>
+  </section>
+
+  <!-- Services teaser -->
+  <section class="sec">
+    <div class="container">
+      <div class="sec-title">Your Care — How We Help <a href="services.html">All services</a></div>
+      <div class="scards">
+        <div class="scard"><div class="ic">🌿</div><h3>Wellness consultations</h3><p>Unhurried, one-on-one time with a registered nurse focused on your goals.</p></div>
+        <div class="scard"><div class="ic">🏠</div><h3>In-home &amp; concierge care</h3><p>Private, higher-touch nursing support in the comfort of your home.</p></div>
+        <div class="scard"><div class="ic">💻</div><h3>Virtual nurse visits</h3><p>Connect securely from anywhere for questions, follow-ups and guidance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <h2>Everything you need to know about women's health — in one place.</h2>
+      <p>Join our newsletter for nurse-written guidance, real stories, and reminders that keep your health on track.</p>
+      <form class="subform" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! Connect this form to your email provider to start collecting subscribers.');">
+        <input type="email" placeholder="Email address" required aria-label="Email address" />
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    <div class="container" style="padding:22px">
+      <p>HerNurse content is for informational purposes only and is not a substitute for emergency care or advice from your physician. In a medical emergency, call your local emergency number immediately.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="index.html" class="brand"><span class="mark">HN</span> HerNurse</a>
+        <div class="social">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="stories.html">Real Stories</a>
+        <a href="topics.html">Health Topics</a>
+        <a href="contact.html">Contact</a>
+        <a href="#newsletter">Subscribe</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+      <p class="foot-note">HerNurse content is for informational purposes only. Please consult your healthcare provider for medical advice, diagnosis or treatment. © 2026 HerNurse.</p>
+    </div>
+  </footer>
+
+  <!-- =================== Ask-a-Nurse widget logic =================== -->
+  <script>
+  /* ============================================================
+     KNOWLEDGE BASE
+     Each topic answers in BITE-SIZED chunks. Only ONE chunk shows
+     at a time; "More info" reveals the next. Add your own topics
+     by copying the pattern below.
+     ============================================================ */
+  const KB = [
+    { id:'hotflash', q:'What helps with hot flashes?',
+      keys:['hot flash','hot flush','flushing','night sweat','overheating menopause'],
+      chunks:[
+        'Hot flashes are sudden waves of heat, usually from the shifting estrogen levels of perimenopause and menopause. They’re very common and not dangerous.',
+        'First-line tips: dress in light layers, keep a cool room and a fan nearby, and sip cold water when one starts.',
+        'Common triggers to cut back on include caffeine, alcohol, spicy food, and stress. Tracking yours for a week can reveal patterns.',
+        'If hot flashes disrupt your sleep or daily life, ask a nurse or doctor about options — from non-hormonal medications to hormone therapy, which is safe and effective for many women.'
+      ], related:['menopause','sleep','perimenopause'] },
+
+    { id:'perimenopause', q:'What is perimenopause?',
+      keys:['perimenopause','peri menopause','transition menopause','irregular period 40'],
+      chunks:[
+        'Perimenopause is the transition leading up to menopause — the years when your hormones start to fluctuate, often beginning in your 40s.',
+        'Signs include irregular periods, hot flashes, sleep changes, mood shifts, and brain fog. They can come and go.',
+        'You’re officially in menopause once you’ve gone 12 months with no period. Perimenopause is everything before that.',
+        'It’s a normal life stage, not a disease — but symptoms are very treatable. A nurse can help you understand what’s happening and what helps.'
+      ], related:['menopause','hotflash'] },
+
+    { id:'menopause', q:'What are the stages of menopause?',
+      keys:['menopause','stages of menopause','postmenopause','change of life'],
+      chunks:[
+        'There are three stages: perimenopause (the lead-up), menopause (12 months with no period), and postmenopause (all the years after).',
+        'Each stage can bring different symptoms — hot flashes and irregular periods early on, and longer-term changes like bone and heart health later.',
+        'Menopause usually happens between ages 45 and 55, with an average around 51.',
+        'Care looks different at each stage. Regular check-ins help you stay ahead of symptoms and protect your long-term health.'
+      ], related:['perimenopause','hotflash'] },
+
+    { id:'uti', q:'How do I know if I have a UTI?',
+      keys:['uti','urinary tract','burning pee','burning urine','bladder infection','frequent urination'],
+      chunks:[
+        'Common UTI signs are a burning feeling when you pee, needing to go often and urgently, and cloudy or strong-smelling urine.',
+        'Drinking plenty of water helps, but water alone usually won’t cure a true infection.',
+        'Most UTIs need antibiotics, so it’s worth getting a quick urine test rather than waiting it out.',
+        'Seek care promptly if you have fever, back or side pain, nausea, or blood in your urine — these can mean the infection is spreading and need faster treatment.'
+      ], related:['yeast','hydration'] },
+
+    { id:'yeast', q:'What does a yeast infection feel like?',
+      keys:['yeast infection','vaginal itching','thrush','discharge itch','candida'],
+      chunks:[
+        'A yeast infection usually causes itching, irritation, and a thick, white, odorless discharge — sometimes with burning.',
+        'It’s caused by an overgrowth of a normal fungus, often after antibiotics, hormonal changes, or stress.',
+        'Over-the-counter antifungal treatments clear most cases, but it helps to confirm it’s yeast and not something else first.',
+        'See a nurse or doctor if it’s your first time, it keeps coming back, or symptoms don’t improve — other conditions can feel similar.'
+      ], related:['uti'] },
+
+    { id:'cramps', q:'How can I ease period cramps?',
+      keys:['period cramp','menstrual cramp','painful period','dysmenorrhea','period pain'],
+      chunks:[
+        'Period cramps come from the uterus contracting. A heating pad on your lower belly is one of the simplest, most effective reliefs.',
+        'Over-the-counter anti-inflammatories like ibuprofen work best when started right as cramps begin, taken with food.',
+        'Gentle movement, hydration, and rest can also take the edge off.',
+        'Talk to a nurse if pain is severe, getting worse, or stops you from daily activities — that can be a sign of conditions like endometriosis worth checking.'
+      ], related:['endo','pcos'] },
+
+    { id:'pcos', q:'What is PCOS?',
+      keys:['pcos','polycystic','irregular periods hormonal','ovary syndrome'],
+      chunks:[
+        'PCOS (polycystic ovary syndrome) is a common hormonal condition that can cause irregular periods, acne, extra hair growth, and trouble with weight.',
+        'It’s linked to how your body handles insulin and androgens (a type of hormone), not just your ovaries.',
+        'It’s diagnosed with a mix of symptoms, blood tests, and sometimes an ultrasound — no single test confirms it.',
+        'PCOS is very manageable. Nutrition, movement, and sometimes medication can help symptoms and protect fertility and long-term health.'
+      ], related:['cramps','endo'] },
+
+    { id:'endo', q:'What is endometriosis?',
+      keys:['endometriosis','endo','severe period pain','pelvic pain'],
+      chunks:[
+        'Endometriosis is when tissue similar to the uterine lining grows outside the uterus, which can cause significant pain.',
+        'Key signs are painful periods, pain during sex, and sometimes trouble getting pregnant — though some women have few symptoms.',
+        'It’s often under-diagnosed and can take years to identify, so trust your instincts if your pain feels beyond “normal.”',
+        'Treatment ranges from pain management and hormonal options to surgery. A nurse can help you advocate for the right workup.'
+      ], related:['cramps','pcos'] },
+
+    { id:'nausea', q:'How do I manage morning sickness?',
+      keys:['morning sickness','pregnancy nausea','nausea pregnant','vomiting pregnancy'],
+      chunks:[
+        'Nausea in early pregnancy is very common. Eating small, frequent meals and keeping plain crackers by the bed can help.',
+        'Ginger (tea, candies) and staying hydrated with small sips often ease symptoms.',
+        'Vitamin B6, and sometimes a doctor-recommended combination with an antihistamine, is a well-studied option — ask before starting.',
+        'Call your provider if you can’t keep fluids down, are losing weight, or feel dizzy — severe nausea (hyperemesis) needs medical care.'
+      ], related:['prenatal','postpartum'] },
+
+    { id:'prenatal', q:'Why are prenatal vitamins important?',
+      keys:['prenatal vitamin','folic acid','pregnancy vitamin','trying to conceive vitamin'],
+      chunks:[
+        'Prenatal vitamins fill nutritional gaps during pregnancy — most importantly folic acid, which protects the baby’s developing brain and spine.',
+        'Ideally start them before conception, since that protection matters most in the earliest weeks.',
+        'They also provide iron and other nutrients that support both you and the baby as needs rise.',
+        'A nurse or provider can recommend the right one for you, especially if you have dietary restrictions or take other medications.'
+      ], related:['nausea','iron'] },
+
+    { id:'iron', q:'Why am I always tired? (Could it be iron?)',
+      keys:['always tired','fatigue','low iron','anemia','exhausted','low energy'],
+      chunks:[
+        'Constant tiredness has many causes, but in women, low iron (anemia) is one of the most common — often from heavy periods.',
+        'Other clues to iron deficiency include pale skin, shortness of breath, cold hands, or unusual cravings (like ice).',
+        'A simple blood test can check your iron and blood count — worth asking for if fatigue is persistent.',
+        'Don’t self-prescribe high-dose iron; too much can cause problems. A nurse can guide diet changes or the right supplement.'
+      ], related:['prenatal','sleep'] },
+
+    { id:'mammogram', q:'When should I start getting mammograms?',
+      keys:['mammogram','breast screening','breast cancer screening','breast check'],
+      chunks:[
+        'Most guidelines suggest starting mammograms around age 40, then every 1–2 years — but the right timing depends on you.',
+        'If you have a family history of breast cancer or other risk factors, screening may start earlier.',
+        'Between mammograms, get familiar with how your breasts normally look and feel, and report any new lump or change.',
+        'A nurse can help you sort through the guidelines and your personal risk to decide what’s right for you.'
+      ], related:['pap','menopause'] },
+
+    { id:'pap', q:'How often do I need a Pap smear?',
+      keys:['pap smear','pap test','cervical screening','smear test','hpv test'],
+      chunks:[
+        'A Pap smear checks for early cervical cell changes. Most women start at age 21.',
+        'From 21–29, it’s usually every 3 years. From 30–65, it’s often every 3–5 years, sometimes combined with an HPV test.',
+        'Your exact schedule depends on past results and risk factors, so it can vary person to person.',
+        'A nurse can confirm when you’re next due and make the visit as comfortable as possible.'
+      ], related:['mammogram'] },
+
+    { id:'postpartum', q:'What is postpartum depression?',
+      keys:['postpartum depression','baby blues','after birth sad','ppd','new mom depressed'],
+      chunks:[
+        'Postpartum depression is more than the short-lived “baby blues” — it’s lasting sadness, anxiety, or emptiness after birth that interferes with daily life.',
+        'It can show up any time in the first year, not just right after delivery, and it is common and treatable — not a personal failing.',
+        'Signs include persistent low mood, trouble bonding, changes in sleep or appetite beyond newborn life, and feeling overwhelmed.',
+        'Please reach out to a provider if this sounds like you. If you ever have thoughts of harming yourself or your baby, seek help immediately — you deserve support, and effective help exists.'
+      ], related:['nausea'] },
+
+    { id:'sleep', q:'Why is my sleep getting worse?',
+      keys:['sleep','insomnia','cant sleep','waking up night','trouble sleeping'],
+      chunks:[
+        'Sleep often shifts with hormones — perimenopause, periods, and pregnancy can all disrupt it, as can stress.',
+        'A consistent bedtime, a cool dark room, and limiting screens and caffeine late in the day are the strongest first steps.',
+        'Night sweats or anxiety waking you up are worth noting — treating the cause often fixes the sleep.',
+        'If poor sleep lasts more than a few weeks, a nurse can help you find the reason rather than just chasing symptoms.'
+      ], related:['hotflash','iron'] },
+
+    { id:'hydration', q:'How much water should I drink?',
+      keys:['how much water','hydration','drink water','dehydrated'],
+      chunks:[
+        'A common rule of thumb is around 6–8 cups a day, but real needs vary with your size, activity, climate, and health.',
+        'A simple check: pale-yellow urine usually means you’re well hydrated; dark means drink more.',
+        'You also get water from food — fruits, vegetables, and soups all count.',
+        'Some conditions change how much fluid is right for you, so ask a provider if you’ve been told to limit or increase fluids.'
+      ], related:['uti'] }
+  ];
+
+  /* -------- OPTIONAL: connect a real AI for ANY question --------
+     Leave USE_AI = false to use the built-in knowledge base above.
+     Set it to true and deploy a small serverless function at /api/ask
+     that returns JSON like { "chunks": ["short part 1","short part 2", ...] }.
+     See HOSTING-AND-IDEAS.md for the exact steps and a sample function. */
+  const USE_AI = false;
+  async function askAI(question){
+    const r = await fetch('/api/ask', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ question })
+    });
+    const data = await r.json();
+    return data.chunks || [];
+  }
+
+  /* -------------------- Widget engine -------------------- */
+  const HN = (function(){
+    const card = document.getElementById('answerCard');
+    const qEl = document.getElementById('answerQ');
+    const body = document.getElementById('answerBody');
+    const moreBtn = document.getElementById('moreBtn');
+    const progress = document.getElementById('answerProgress');
+    const relatedWrap = document.getElementById('relatedWrap');
+    const relatedList = document.getElementById('relatedList');
+    let chunks = [], shown = 0, relatedIds = [];
+
+    function findTopic(text){
+      const t = text.toLowerCase();
+      let best = null, bestScore = 0;
+      for(const topic of KB){
+        let score = 0;
+        for(const k of topic.keys){ if(t.includes(k)) score += k.length; }
+        // light word overlap with the canonical question
+        topic.q.toLowerCase().replace(/[^a-z ]/g,'').split(' ').forEach(w=>{
+          if(w.length>3 && t.includes(w)) score += 1;
+        });
+        if(score > bestScore){ bestScore = score; best = topic; }
+      }
+      return bestScore > 0 ? best : null;
+    }
+
+    function renderChunk(){
+      const p = document.createElement('p');
+      p.className = 'a-chunk';
+      p.textContent = chunks[shown];
+      body.appendChild(p);
+      shown++;
+      progress.textContent = 'Part ' + shown + ' of ' + chunks.length;
+      if(shown >= chunks.length){
+        moreBtn.disabled = true;
+        if(relatedIds.length){ showRelated(); }
+      }
+    }
+
+    function showRelated(){
+      relatedList.innerHTML = '';
+      relatedIds.forEach(id=>{
+        const topic = KB.find(x=>x.id===id);
+        if(!topic) return;
+        const a = document.createElement('a');
+        a.textContent = topic.q;
+        a.onclick = ()=> ask(topic.q);
+        relatedList.appendChild(a);
+      });
+      relatedWrap.style.display = 'block';
+    }
+
+    async function ask(text){
+      if(!text || !text.trim()) return;
+      document.getElementById('askInput').value = text;
+      body.innerHTML = ''; relatedWrap.style.display='none'; relatedList.innerHTML='';
+      moreBtn.disabled = false; shown = 0;
+      const topic = findTopic(text);
+
+      if(topic){
+        qEl.textContent = topic.q;
+        chunks = topic.chunks.slice();
+        relatedIds = topic.related || [];
+      } else if(USE_AI){
+        qEl.textContent = text;
+        moreBtn.disabled = true; progress.textContent = 'Thinking…';
+        try { chunks = await askAI(text); } catch(e){ chunks = []; }
+        relatedIds = [];
+        moreBtn.disabled = false;
+        if(!chunks.length){ chunks = fallback(text); }
+      } else {
+        qEl.textContent = text;
+        chunks = fallback(text);
+        relatedIds = ['menopause','uti','cramps'];
+      }
+      card.classList.add('show');
+      renderChunk();
+      card.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    function fallback(text){
+      return [
+        'I don’t have a saved answer for that one yet — but you don’t have to figure it out alone.',
+        'For a specific, personal answer, the best next step is a quick consult with one of our nurses, who can ask the right follow-up questions.',
+        'You can also browse our health topics, or connect a live AI to this box so it can answer any question (see the site’s setup guide).'
+      ];
+    }
+
+    function more(){ if(shown < chunks.length) renderChunk(); }
+    function reset(){
+      card.classList.remove('show');
+      document.getElementById('askInput').value='';
+      document.getElementById('askInput').focus();
+      window.scrollTo({top: document.getElementById('ask').offsetTop - 60, behavior:'smooth'});
+    }
+    return { ask, more, reset };
+  })();
+
+  // wire up form + suggestion chips
+  document.getElementById('askForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    HN.ask(document.getElementById('askInput').value);
+  });
+  (function(){
+    const chips = ['What helps with hot flashes?','How do I know if I have a UTI?','How can I ease period cramps?','What is perimenopause?','When should I start mammograms?'];
+    const wrap = document.getElementById('askChips');
+    chips.forEach(c=>{
+      const b = document.createElement('button');
+      b.type='button'; b.textContent = c;
+      b.onclick = ()=> HN.ask(c);
+      wrap.appendChild(b);
+    });
+  })();
+  </script>
+
+</body>
+</html>

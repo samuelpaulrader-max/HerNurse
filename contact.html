@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact &amp; Book — HerNurse</title>
+  <meta name="description" content="Book a consultation with a HerNurse registered nurse, or send us a message. Virtual and in-home options available." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <span>Women's health, guided by nurses.</span>
+      <span class="links">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="index.html#newsletter">Subscribe</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container masthead">
+      <a href="index.html" class="brand"><span class="mark">HN</span> HerNurse</a>
+      <div class="header-actions">
+        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('cats').classList.toggle('open')">☰</button>
+        <a href="index.html#newsletter" class="btn-sub">Subscribe</a>
+        <a href="contact.html" class="btn-donate">Book a nurse</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="catnav">
+    <div class="container" id="cats">
+      <a href="index.html">Home</a>
+      <a href="services.html">Your Care</a>
+      <a href="topics.html">Your Health</a>
+      <a href="topics.html">Your Wellness</a>
+      <a href="stories.html">Real Stories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Contact &amp; Booking</span>
+      <h1>Book a consultation or send us a note</h1>
+      <p>Tell us a little about what you're looking for and how you'd like to connect. A nurse will follow up with next steps.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <form class="form" onsubmit="event.preventDefault(); this.style.display='none'; document.getElementById('thanks').style.display='block';">
+        <div class="form-row">
+          <div class="field"><label for="first">First name</label><input id="first" name="first" required /></div>
+          <div class="field"><label for="last">Last name</label><input id="last" name="last" required /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" required /></div>
+          <div class="field"><label for="phone">Phone (optional)</label><input id="phone" type="tel" name="phone" /></div>
+        </div>
+        <div class="field">
+          <label for="service">What are you interested in?</label>
+          <select id="service" name="service">
+            <option>Wellness consultation</option>
+            <option>Pregnancy &amp; postpartum support</option>
+            <option>Menopause &amp; midlife care</option>
+            <option>Health navigation &amp; advocacy</option>
+            <option>Concierge / in-home nursing</option>
+            <option>Virtual nurse visit</option>
+            <option>Not sure yet — help me decide</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pref">Preferred way to connect</label>
+          <select id="pref" name="pref">
+            <option>Virtual (video)</option>
+            <option>In-home</option>
+            <option>Phone</option>
+          </select>
+        </div>
+        <div class="field"><label for="msg">How can we help?</label><textarea id="msg" name="msg" placeholder="Share anything you'd like your nurse to know..."></textarea></div>
+        <button class="btn btn-primary" type="submit">Request my consultation</button>
+        <p style="font-size:.82rem;margin-top:14px">By submitting, you agree to be contacted about your request. Your information is kept private.</p>
+      </form>
+
+      <div id="thanks" class="form" style="display:none; text-align:center">
+        <h2 style="color:var(--slate)">Thank you!</h2>
+        <p>Your request has been received. <strong>Note:</strong> this demo form isn't connected yet — see the hosting guide to link it to email or a scheduling tool like Calendly.</p>
+        <p><a href="index.html" class="btn btn-ghost">Back to home</a></p>
+      </div>
+
+      <div style="max-width:660px;margin:26px auto 0;text-align:center">
+        <p>Prefer email? Reach us at <a href="mailto:hello@hernurse.com">hello@hernurse.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    <div class="container" style="padding:22px">
+      <p>HerNurse content and services are not a substitute for emergency care or advice from your physician. In a medical emergency, call your local emergency number immediately.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="index.html" class="brand"><span class="mark">HN</span> HerNurse</a>
+        <div class="social"><a href="#">Facebook</a><a href="#">Instagram</a><a href="#">LinkedIn</a></div>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About</a><a href="services.html">Services</a><a href="stories.html">Real Stories</a><a href="topics.html">Health Topics</a><a href="contact.html">Contact</a><a href="index.html#newsletter">Subscribe</a><a href="#">Privacy Policy</a><a href="#">Terms of Use</a>
+      </div>
+      <p class="foot-note">HerNurse content is for informational purposes only. Please consult your healthcare provider for medical advice, diagnosis or treatment. © 2026 HerNurse.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
