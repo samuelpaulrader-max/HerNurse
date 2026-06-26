@@ -14,7 +14,7 @@ export default async (req) => {
     "You are a women's-health nurse educator for HerNurse. Answer the user's health question in 3 to 5 SHORT, bite-sized chunks of 1-2 sentences each, in plain, warm language. " +
     "Give general health education only — never a diagnosis, never specific personal medical advice, and never prescribe medication or doses. " +
     "If the topic is serious, urgent, or an emergency, say so clearly and advise contacting a clinician or emergency services. " +
-    "Return ONLY a JSON array of strings (each string = one chunk), with no other text.";
+    "Return ONLY a raw JSON array of strings (each string = one chunk). Do NOT wrap it in markdown, code fences, or backticks, and add no other text.";
 
   try {
     const r = await fetch("https://api.anthropic.com/v1/messages", {
@@ -32,10 +32,19 @@ export default async (req) => {
       })
     });
     const data = await r.json();
-    let text = (data && data.content && data.content[0] && data.content[0].text) || "";
+    let text = ((data && data.content && data.content[0] && data.content[0].text) || "").trim();
+    // Strip ```json ... ``` or ``` ... ``` fences the model may add.
+    text = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
     let chunks;
-    try { chunks = JSON.parse(text); }
-    catch { chunks = text.split(/\n+/).filter(Boolean); }
+    try {
+      chunks = JSON.parse(text);
+    } catch {
+      // Fallback: split into lines/sentences, dropping any stray fence/bracket lines.
+      chunks = text
+        .split(/\n+/)
+        .map((l) => l.replace(/^[\s\-\*\d\.\)\[\]"]+/, "").replace(/[",\[\]]+$/, "").trim())
+        .filter((l) => l && l !== "json" && l !== "```");
+    }
     if (!Array.isArray(chunks)) chunks = [String(chunks)];
     chunks = chunks.map((c) => String(c).trim()).filter(Boolean).slice(0, 6);
     if (!chunks.length) chunks = ["Sorry — I couldn’t generate an answer just now. Please try rephrasing, or book a consult with a nurse."];
