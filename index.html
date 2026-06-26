@@ -391,7 +391,7 @@
      Set it to true and deploy a small serverless function at /api/ask
      that returns JSON like { "chunks": ["short part 1","short part 2", ...] }.
      See HOSTING-AND-IDEAS.md for the exact steps and a sample function. */
-  const USE_AI = false;
+  const USE_AI = true;
   async function askAI(question){
     const r = await fetch('/api/ask', {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -412,19 +412,26 @@
     const relatedList = document.getElementById('relatedList');
     let chunks = [], shown = 0, relatedIds = [];
 
+    // Words too generic to ever indicate a topic on their own.
+    const STOP = new Set(['what','whats','when','where','which','how','why','who','does','do','did','is','are','am','was','were','be','being','been','the','a','an','of','to','in','on','for','and','or','with','without','about','from','that','this','these','those','my','me','i','you','your','it','its','should','could','would','can','will','help','helps','helping','get','got','have','has','had','need','want','know','tell','feel','feeling','take','make','any','some','more','most','very','really','please','question','medical','health']);
+
     function findTopic(text){
-      const t = text.toLowerCase();
+      const t = ' ' + text.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ') + ' ';
       let best = null, bestScore = 0;
       for(const topic of KB){
         let score = 0;
-        for(const k of topic.keys){ if(t.includes(k)) score += k.length; }
-        // light word overlap with the canonical question
+        // Only score on explicit topic keywords (multi-word keys score higher).
+        for(const k of topic.keys){
+          if(t.includes(k)){ score += 5 + (k.split(' ').length - 1) * 5; }
+        }
+        // Light bonus for meaningful (non-stopword) words shared with the headline question.
         topic.q.toLowerCase().replace(/[^a-z ]/g,'').split(' ').forEach(w=>{
-          if(w.length>3 && t.includes(w)) score += 1;
+          if(w.length > 3 && !STOP.has(w) && t.includes(' ' + w + ' ')) score += 2;
         });
         if(score > bestScore){ bestScore = score; best = topic; }
       }
-      return bestScore > 0 ? best : null;
+      // Require a real keyword signal before claiming a match; otherwise fall back.
+      return bestScore >= 5 ? best : null;
     }
 
     function renderChunk(){
